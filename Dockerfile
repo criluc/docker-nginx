@@ -1,14 +1,14 @@
 FROM debian:wheezy
 
-MAINTAINER NGINX Docker Maintainers "docker-maint@nginx.com"
-
-RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
-RUN echo "deb http://nginx.org/packages/mainline/debian/ wheezy nginx" >> /etc/apt/sources.list
+MAINTAINER Cristian Lucchesi "cristian.lucchesi@gmail.com"
 
 ENV NGINX_VERSION 1.7.12-1~wheezy
 
-RUN apt-get update && \
-    apt-get install -y ca-certificates nginx=${NGINX_VERSION} && \
+COPY nginx_${NGINX_VERSION}_amd64.deb .
+
+RUN apt-get update && \ 
+    apt-get install -y adduser libpcre3 libxml2 libssl1.0.0 sysv-rc && \
+    dpkg -i nginx_${NGINX_VERSION}_amd64.deb && \
     rm -rf /var/lib/apt/lists/*
 
 # forward request and error logs to docker log collector
