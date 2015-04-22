@@ -1,0 +1,30 @@
+Format: 1.8
+Date: Tue, 21 Apr 2015 18:24:00 +0300
+Source: nginx
+Binary: nginx nginx-debug nginx-dbg
+Architecture: amd64
+Version: 1.8.0-1~utopic
+Distribution: utopic
+Urgency: low
+Maintainer: Sergey Budnevitch <sb@nginx.com>
+Changed-By: Sergey Budnevitch <sb@nginx.com>
+Description:
+ nginx      - high performance web server
+ nginx-dbg  - nginx debug symbols
+ nginx-debug - debug version of nginx
+Changes:
+ nginx (1.8.0-1~utopic) utopic; urgency=low
+ .
+   * 1.8.0
+Checksums-Sha1:
+ bd70de555681bd450ba0095de727500ee5034da2 405184 nginx_1.8.0-1~utopic_amd64.deb
+ ca8d3383ea33478bdaaeac9a2998c2c5a7e2aabf 1432970 nginx-debug_1.8.0-1~utopic_amd64.deb
+ 25eb47835acdb7afee5bfe17ddbc09a7b12ee8b7 1102370 nginx-dbg_1.8.0-1~utopic_amd64.deb
+Checksums-Sha256:
+ 772781e7616f29f6582be85e3de09e2e81477d574627d2c167b81efd9e3aaa18 405184 nginx_1.8.0-1~utopic_amd64.deb
+ 2ec627f4f83dbbbffd642ec71ad4d7fad9e7c3ac2710657db9eddcec3e440073 1432970 nginx-debug_1.8.0-1~utopic_amd64.deb
+ 929c1af6a79a2f98ff9a0c815d649874d64f9caf971147db3ddcdac1345cac8b 1102370 nginx-dbg_1.8.0-1~utopic_amd64.deb
+Files:
+ 1946768a48e3e60d8fc3ec60e7279d5f 405184 httpd optional nginx_1.8.0-1~utopic_amd64.deb
+ 88f190c419bd7b9923a54f04f384f961 1432970 debug extra nginx-debug_1.8.0-1~utopic_amd64.deb
+ 030ca95922d84ec3eef40a60c741e9d2 1102370 debug extra nginx-dbg_1.8.0-1~utopic_amd64.deb
