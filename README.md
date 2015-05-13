@@ -29,13 +29,25 @@ docker pull criluc/docker-nginx-http-shibboleth
 You could also use this project as an apt repository containings the
 debian wheezy and the ubuntu utopic packaged version.
 
+## Ubuntu utopic (ver. 15.04) repository
+
+On Ubuntu utopic you can use this nginx version adding using this source list
+
+```
+echo '# Nginx with nginx-http-shibboleth module
+deb
+https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/ubuntu/vivid ./' |
+sudo tee -a /etc/apt/sources.list.d/nginx-http-shibboleth.list
+```
+
 ## Ubuntu utopic (ver. 14.10) repository
 
 On Ubuntu utopic you can use this nginx version adding using this source list
 
 ```
 echo '# Nginx with nginx-http-shibboleth module
-deb https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/ubuntu/ ./' | 
+deb
+https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/ubuntu/utopic ./' | 
 sudo tee -a /etc/apt/sources.list.d/nginx-http-shibboleth.list
 ```
 
