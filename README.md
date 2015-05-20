@@ -51,12 +51,24 @@ https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/ubuntu/utopic 
 sudo tee -a /etc/apt/sources.list.d/nginx-http-shibboleth.list
 ```
 
+## Debian Jessie (ver. 8) repository
+
+On debian jessie you can use this nginx version adding using this source list
+
+```
+echo '# Nginx with nginx-http-shibboleth module
+deb
+https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/debian/jessie ./' | 
+sudo tee -a /etc/apt/sources.list.d/nginx-http-shibboleth.list
+```
+
 ## Debian wheezy (ver. 7) repository
 
 On debian wheezy you can use this nginx version adding using this source list
 
 ```
 echo '# Nginx with nginx-http-shibboleth module
-deb https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/debian/ ./' | 
+deb
+https://github.com/criluc/docker-nginx-http-shibboleth/raw/master/debian/wheezy ./' | 
 sudo tee -a /etc/apt/sources.list.d/nginx-http-shibboleth.list
 ```

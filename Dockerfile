@@ -1,22 +1,29 @@
-FROM debian:wheezy
+FROM debian:jessie
 
 MAINTAINER Cristian Lucchesi "cristian.lucchesi@gmail.com"
 
-ENV NGINX_VERSION 1.8.0-1~wheezy
+ENV NGINX_VERSION 1.8.0-1~jessie
 
-COPY debian/wheezy/nginx_${NGINX_VERSION}_amd64.deb .
+COPY debian/jessie/nginx_${NGINX_VERSION}_amd64.deb .
 
-RUN apt-get update && \ 
-    apt-get install -y adduser libpcre3 libxml2 libssl1.0.0 sysv-rc && \
+RUN mkdir /var/log/shibboleth/ && mkdir /var/run/shibboleth/ && \
+    chown -R _shibd:_shibd /var/log/shibboleth /var/run/shibboleth/ && \
+    apt-get update && \ 
+    apt-get install -y adduser libpcre3 libxml2 libssl1.0.0 \
+    supervisor shibboleth-sp2-utils && \
     dpkg -i nginx_${NGINX_VERSION}_amd64.deb && \
     rm -rf /var/lib/apt/lists/*
+    
+COPY supervisor-shib-deps.conf /etc/supervisor/conf.d/
+COPY start-shibd.sh /
 
-# forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
+RUN chmod +x /start-shibd.sh
+
+#supervisor needs nginx starting in Foreground
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 VOLUME ["/var/cache/nginx"]
 
 EXPOSE 80 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
