@@ -1,0 +1,4 @@
+#!/bin/sh
+
+dpkg-buildpackage -b
+mv ../*.deb ../debs/
