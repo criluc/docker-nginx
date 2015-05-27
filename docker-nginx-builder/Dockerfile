@@ -15,7 +15,8 @@ RUN wget http://nginx.org/keys/nginx_signing.key && \
 RUN mkdir /opt/rebuildnginx && mkdir /opt/rebuildnginx/debs && \
     cd /opt/rebuildnginx && \
     apt-get source nginx && apt-get build-dep -y nginx && \
-    git clone https://github.com/nginx-shib/nginx-http-shibboleth.git
+    git clone https://github.com/nginx-shib/nginx-http-shibboleth.git && \
+    git clone https://github.com/openresty/headers-more-nginx-module.git
     
 #RUN dpkg-buildpackage -b
 #RUN apt-get install vim
@@ -24,7 +25,7 @@ RUN mkdir /opt/rebuildnginx && mkdir /opt/rebuildnginx/debs && \
 WORKDIR /opt/rebuildnginx/nginx-1.8.0
 
 COPY buildpackage.sh /opt/rebuildnginx/nginx-1.8.0/
-RUN sed -i 's,--with-ipv6,--with-ipv6 --add-module=/opt/rebuildnginx/nginx-http-shibboleth,g' debian/rules
+RUN sed -i 's,--with-ipv6,--with-ipv6 --add-module=/opt/rebuildnginx/nginx-http-shibboleth --add-module=/opt/rebuildnginx/headers-more-nginx-module,g' debian/rules
 
 VOLUME ["/opt/rebuildnginx"]
 
